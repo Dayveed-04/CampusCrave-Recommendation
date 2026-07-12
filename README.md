@@ -1,21 +1,94 @@
-CampusCrave Recommendation Service
-A lightweight content-based recommendation engine for CampusCrave — a food ordering system for tertiary institutions. Built with Python and Flask.
+# CampusCrave Recommendation Service
 
-Overview
-This service analyzes a student's order history and recommends food items they are likely to enjoy. It uses TF-IDF vectorization and cosine similarity to find menu items that are most similar to what the student has previously ordered.
-How it works
+A content-based recommendation service for CampusCrave that suggests meals based on a student's previous orders.
 
-Each menu item is represented as a feature string combining its category, name, description, and price range
-Category is weighted more heavily (repeated 3x) to prioritize similar food types
-The student's previously ordered items are averaged into a student profile vector
-Cosine similarity is computed between the student profile and all available menu items
-The top N most similar items are returned, with a maximum of 2 items per category to ensure variety
+The recommendation engine uses **TF-IDF vectorization** and **cosine similarity** to identify menu items that closely match a student's preferences.
 
-Price Range Bucketing
-PriceLabelBelow ₦1,500budget₦1,500 – ₦2,500midrangeAbove ₦2,500premium
+---
 
-Tech Stack
+## Features
 
-Language: Python 3.x
-Framework: Flask
-ML Libraries: scikit-learn, NumPy
+- Personalized meal recommendations
+- Content-based filtering
+- TF-IDF vectorization
+- Cosine similarity matching
+- Price range awareness
+- Category weighting for better relevance
+- REST API built with Flask
+
+---
+
+## How It Works
+
+1. Menu items are converted into feature vectors using:
+   - Category
+   - Food name
+   - Description
+   - Price range
+
+2. Categories are weighted more heavily to prioritize similar food types.
+
+3. A user profile is created from the student's previous orders.
+
+4. Cosine similarity is calculated between the user profile and all available menu items.
+
+5. The most relevant meals are returned while limiting recommendations from the same category to improve variety.
+
+---
+
+## Price Categories
+
+| Price | Label |
+|--------|-------|
+| Below ₦1,500 | Budget |
+| ₦1,500 – ₦2,500 | Mid-range |
+| Above ₦2,500 | Premium |
+
+---
+
+## Tech Stack
+
+- Python
+- Flask
+- scikit-learn
+- NumPy
+- Pandas
+
+---
+
+## Getting Started
+
+```bash
+git clone https://github.com/Dayveed-04/CampusCrave-Recommendation.git
+
+cd CampusCrave-Recommendation
+
+pip install -r requirements.txt
+
+python app.py
+```
+
+The service runs on:
+
+```
+http://localhost:5001
+```
+
+---
+
+## Future Improvements
+
+- Hybrid recommendation model
+- Better handling of new users (cold start)
+- User feedback integration
+- Improved ranking algorithm
+
+---
+
+## Author
+
+David Uwaje
+
+GitHub: https://github.com/Dayveed-04
+
+LinkedIn: https://www.linkedin.com/in/david-uwaje-58153425b/
